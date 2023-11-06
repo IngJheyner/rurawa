@@ -1,0 +1,9 @@
+select {
+    appearance: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}

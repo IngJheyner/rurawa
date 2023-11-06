@@ -9,15 +9,16 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
+    use HasRoles;
     /**
      * The attributes that are mass assignable.
      *
@@ -27,6 +28,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'facebook_id',
+        'google_id',
+        'github_id',
     ];
 
     /**
@@ -72,5 +76,13 @@ class User extends Authenticatable
     public function adminlte_profile_url()
     {
       return 'user/profile';
+    }
+
+    /* ============================================
+    RELATIONSHIPS
+    =============================================== */
+    // persons
+    public function person() {
+        return $this->hasOne(Person::class);
     }
 }

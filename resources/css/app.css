@@ -1,12 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-@import './common.css';
-@import './variables.css';
+@import "tailwindcss/base";
+@import "./variables.css";
+@import "base/select.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/components";
+@import "components/container";
+@import "components/intl-telInput";
+@import "components/label-required";
+@import "components/transition";
+
+@import "tailwindcss/utilities";
 
 [x-cloak] {
     display: none;
 }
+
+.opacity-transition {
+    @apply transition-opacity duration-[1s] opacity-[0.8];
+}
+

@@ -1,5 +1,6 @@
 <x-guest-layout>
-    <x-authentication-card>
+
+    {{-- <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
@@ -56,5 +57,66 @@
                 </x-button>
             </div>
         </form>
-    </x-authentication-card>
+    </x-authentication-card> --}}
+
+    <div x-data="index">
+
+        <x-authentication-rurawa-card>
+
+            <x-slot name="header">
+
+                <h1 class="text-2xl font-bold text-center">{{ __('Create account') }}</h1>
+
+            </x-slot>
+
+            @livewire('register-wizard')
+
+        </x-authentication-rurawa-card>
+
+    </div>
+
+    @push('scripts')
+    <script>
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('index', () => ({
+                intl: null,
+                phone: null,
+                init() {
+
+                    this.phone = document.querySelector("#phone");
+                    if (this.phone)
+                        this.intlTelInput(this.phone);
+
+                },
+                intlTelInput(phone) {
+                    this.intl = intlTelInput(this.phone, {
+                        initialCountry: 'co',
+                        preferredCountries: ['co', 'us'],
+                        separateDialCode: true,
+                        //hiddenInput: "phone",
+                        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                    });
+                },
+                animateImage(nameImage) {
+                    const background = document.querySelector(".grid-guest-rigth span");
+                    const img = document.querySelector(".grid-guest-rigth img");
+
+                    background.classList.add("opacity-transition");
+
+                    setTimeout(() => {
+
+                        background.classList.remove("opacity-transition");
+                        console.log(nameImage);
+                        img.src = nameImage;
+
+
+                    }, 1000);
+                },
+            }))
+        });
+
+    </script>
+    @endpush
+
 </x-guest-layout>

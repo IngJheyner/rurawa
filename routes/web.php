@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Auth\Register\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// Rutas para el registro de usuarios
+// Route::get('/register', Index::class)->name('register');
+
+
+
+

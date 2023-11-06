@@ -43,7 +43,7 @@
             <main class="relative w-full h-screen snap-y snap-mandatory scroll-smooth">
                 {{ $slot }}
             </main>
-            
+
         </div>
 
         @stack('modals')

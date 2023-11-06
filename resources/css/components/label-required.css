@@ -1,0 +1,5 @@
+@layer components {
+    .required:after {
+        @apply content-['*'] text-red-500;
+    }
+}

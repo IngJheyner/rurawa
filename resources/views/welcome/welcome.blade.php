@@ -11,6 +11,10 @@
 
         </section>
 
+        <section>
+            Beneficios
+        </section>
+
     </div>
 
 </x-app-layout>

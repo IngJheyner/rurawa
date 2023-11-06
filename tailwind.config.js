@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import nesting from 'tailwindcss/nesting';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,7 +12,6 @@ export default {
         './resources/views/**/*.blade.php',
         "./node_modules/tw-elements/dist/js/**/*.js",
     ],
-
     theme: {
         extend: {
             colors: {
@@ -24,9 +24,19 @@ export default {
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
+            animation: {
+                'blur-in': 'blur-in 0.4s linear both',
+            },
+            keyframes: {
+                'blur-in': {
+                    '0%': { filter: 'blur(12px);opacity:0' },
+                    '100%': { filter: 'blur(0);opacity:1' }
+                },
+
+            }
         },
     },
 
-    plugins: [forms, typography, require("tw-elements/dist/plugin.cjs")],
+    plugins: [forms, typography, require("tw-elements/dist/plugin.cjs"), nesting],
     darkMode: "class",
 };
