@@ -27,16 +27,8 @@ class RegisterZeroComponent extends StepComponent
 
     public function next() {
 
-        // Retrasar la validacion unos segundos
         $this->validate();
-
         $this->nextStep();
-
-    }
-
-    public function previous() {
-
-        $this->previousStep();
 
     }
 

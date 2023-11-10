@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\OrganizationBelongsEnum;
 use App\Enums\TypeOfDocumentEnum;
 use App\Enums\TypeOfPersonEnum;
 use Illuminate\Database\Migrations\Migration;
@@ -21,11 +22,15 @@ return new class extends Migration
             $table->string('last_name');
             $table->enum('document_type', TypeOfDocumentEnum::forMigration())->default(TypeOfDocumentEnum::ID_IDENTITY->value);
             $table->string('document_number');
+            $table->date('date_of_birth')->nullable();
             $table->string('phone', 20);
+            $table->string('address')->unique()->nullable();
             $table->string('company_name')->nullable();
-            $table->string('organization_belongs')->nullable();
+            $table->enum('organization_belongs', OrganizationBelongsEnum::forMigration())->nullable();
             // users
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            // cities
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

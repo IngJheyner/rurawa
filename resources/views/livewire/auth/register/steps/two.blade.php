@@ -5,9 +5,9 @@
         <i class="fa-solid fa-arrow-left text-secondary-color mx-2 my-auto"></i> Atras
     </a>
 
-    <div class="flex flex-col h-[calc(100vh-300px)] mb-8">
+    <div class="flex flex-col h-[calc(100vh-300px)] xl:h-[calc(100vh-270px)] mb-8">
 
-        <div class="flex-1 mt-4 animate-blur-in">
+        <div class="flex-1 mt-4 animate-blur-in overflow-y-auto overflow-hidden">
 
             <div class="space-y-2">
 

@@ -23,16 +23,37 @@ class RegisterOneComponent extends StepComponent
 
     public function mount() {
 
-        foreach (TypeOfDocumentEnum::cases() as $value) {
-            $this->type_of_documents[$value->value] = $value->getTypeOfDocument();
+        $dataStepZero = $this->state()->get('step-zero');
+
+        if(isset($dataStepZero['type_person']) && $dataStepZero['type_person'] == 'PL') {
+
+            $this->type_of_document = 'NIT';
+
+        }else{
+
+            foreach (TypeOfDocumentEnum::cases() as $value) {
+                $this->type_of_documents[$value->value] = $value->getTypeOfDocument();
+            }
+
+            unset($this->type_of_documents['NIT']);
+
         }
     }
 
     public function next() {
 
         $this->validate();
-        $this->nextStep();
 
+        $dataStepZero = $this->state()->get('step-zero');
+
+        switch ($dataStepZero['type_user']) {
+            case 'farmer':
+                $this->showStep('step-two');
+                break;
+            case 'company':
+                $this->showStep('step-third');
+                break;
+        }
     }
 
     public function previous() {

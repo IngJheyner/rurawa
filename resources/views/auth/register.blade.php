@@ -76,6 +76,7 @@
     </div>
 
     @push('scripts')
+
     <script>
 
         document.addEventListener('alpine:init', () => {
@@ -117,6 +118,7 @@
         });
 
     </script>
+
     @endpush
 
 </x-guest-layout>

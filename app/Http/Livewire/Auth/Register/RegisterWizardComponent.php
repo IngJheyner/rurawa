@@ -7,6 +7,7 @@ namespace App\Http\Livewire\Auth\Register;
 // use App\Http\Livewire\Steps\DeliveryAddressStepComponent;
 
 use App\Http\Livewire\Auth\Register\Steps\RegisterOneComponent;
+use App\Http\Livewire\Auth\Register\Steps\RegisterThirdComponent;
 use App\Http\Livewire\Auth\Register\Steps\RegisterTwoComponent;
 use App\Http\Livewire\Auth\Register\Steps\RegisterZeroComponent;
 //use App\Support\OrderWizardState;
@@ -20,6 +21,7 @@ class RegisterWizardComponent extends WizardComponent
             RegisterZeroComponent::class,
             RegisterOneComponent::class,
             RegisterTwoComponent::class,
+            RegisterThirdComponent::class,
         ];
     }
 

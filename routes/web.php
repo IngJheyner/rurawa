@@ -29,8 +29,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-// Rutas para el registro de usuarios
-// Route::get('/register', Index::class)->name('register');
 
 
 

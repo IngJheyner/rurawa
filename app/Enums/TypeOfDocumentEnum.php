@@ -15,6 +15,7 @@ enum TypeOfDocumentEnum: string
     case ID_FOREIGN = "CE";
     case PASSPORT = "PA";
     case OTHER = "OT";
+    case NIT = "NIT";
 
     public function getTypeOfDocument(): string
     {
@@ -26,6 +27,7 @@ enum TypeOfDocumentEnum: string
             self::ID_FOREIGN => "Cédula de extranjería",
             self::PASSPORT => "Pasaporte",
             self::OTHER => "Otro",
+            self::NIT => "NIT",
         };
     }
 }

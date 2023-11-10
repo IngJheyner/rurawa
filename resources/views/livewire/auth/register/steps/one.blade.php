@@ -1,11 +1,11 @@
-<div>
+<div x-data="index">
 
     <a href="#" class="absolute top-1 left-[5rem] mt-4 mr-4 text-gray-500 hover:text-gray-900"
     wire:click="previous">
         <i class="fa-solid fa-arrow-left text-secondary-color mx-2 my-auto"></i> Atras
     </a>
 
-    <div class="flex flex-col xl:h-[calc(100vh-270px)] mb-8" x-data>
+    <div class="flex flex-col xl:h-[calc(100vh-270px)] mb-8">
 
         <div class="flex-1 mt-8 animate-blur-in overflow-y-auto overflow-hidden py-2">
 
@@ -63,15 +63,27 @@
 
                     <x-slot name="input">
 
-                        <select class="flex-1 border-0 focus:border-white focus:ring-white text-gray-500"
-                        wire:model.defer="type_of_document">
+                        @if ($type_of_document == 'NIT')
 
-                            <option disabled selected value="none">Seleccione una opción</option>
-                            @foreach ($type_of_documents as $key => $type)
-                                <option value="{{ $key }}">{{ $type }}</option>
-                            @endforeach
+                            <i class="fa-solid fa-id-card mx-2 my-auto text-2xl text-secondary-color"></i>
 
-                        </select>
+                            <span class="p-[0.5rem_0.75rem_0.5rem_0.75rem] leading-[1.5rem]">{{ $type_of_document }}</span>
+
+                        @else
+
+                            <select class="flex-1 border-0 focus:border-white focus:ring-white text-gray-500"
+                            wire:model.defer="type_of_document">
+
+                                <option disabled selected value="none">Seleccione una opción</option>
+                                @foreach ($type_of_documents as $key => $type)
+                                    <option value="{{ $key }}">{{ $type }}</option>
+                                @endforeach
+
+                            </select>
+
+                        @endif
+
+
 
                     </x-slot>
 
@@ -109,18 +121,17 @@
 
             <div class="space-y-2 mt-4">
 
-                <x-label>{{ __('organization to which it belongs') }}</x-label>
+                <x-label>{{ __('Date of birth') }}</x-label>
                 <x-group-input-rurawa>
+
+                    <x-slot name="icon">
+                        <i class="fa-solid fa-date mx-2 my-auto text-2xl text-secondary-color"></i>
+                    </x-slot>
 
                     <x-slot name="input">
 
-                        <select class="flex-1 border-0 focus:border-white focus:ring-white text-gray-500">
-
-                            <option disabled selected>Seleccione una opción</option>
-                            <option value="1">Natural</option>
-                            <option value="2">Juridica</option>
-
-                        </select>
+                        <x-input class="border-none w-full bg-gray-50 text-gray-500" placeholder="Fecha de nacimiento" type="date"
+                        ></x-input>
 
                     </x-slot>
 

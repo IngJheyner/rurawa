@@ -22,6 +22,7 @@ class RegisterTwoComponent extends StepComponent
 
     protected $dataStepZero;
     protected $dataStepOne;
+    protected $dataStepThird;
 
     public string $email = '';
     public string $phone = '';
@@ -48,6 +49,7 @@ class RegisterTwoComponent extends StepComponent
 
         $this->dataStepZero = $this->state()->get('step-zero');
         $this->dataStepOne = $this->state()->get('step-one');
+        $this->dataStepThird = $this->state()->get('step-third');
 
         $name = strtoupper(substr($this->dataStepOne['first_name'], 0, 1));
         $surname = strtolower(substr($this->dataStepOne['last_name'], 0, 1));
@@ -68,8 +70,13 @@ class RegisterTwoComponent extends StepComponent
             'last_name' => $this->dataStepOne['last_name'],
             'type_of_document' => $this->dataStepOne['type_of_document'],
             'document_number' => $this->dataStepOne['document_number'],
+            'company_name' => $this->dataStepThird['company_name'] ?? null,
+            'organization_belongs' => $this->dataStepThird['organization_belongs'] ?? null,
+            'date_of_birth' => $this->dataStepThird['date_of_birth'] ?? null,
+            'address' => $this->dataStepThird['address'] ?? null,
             'phone' => $this->phone,
             'user_id' => $user->id,
+            'city_id' => $this->dataStepThird['city_id'] ?? null,
         ]);
 
         // Asignar rol al usuario creado anteriormente

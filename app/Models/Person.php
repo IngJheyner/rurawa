@@ -23,10 +23,13 @@ class Person extends Model
         'last_name',
         'document_type',
         'document_number',
+        'date_of_birth',
+        'address',
         'company_name',
         'phone',
         'organization_belongs',
-        'user_id'
+        'user_id',
+        'city_id',
     ];
 
     /* ============================================
