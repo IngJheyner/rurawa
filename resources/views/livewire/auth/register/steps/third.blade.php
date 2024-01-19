@@ -65,6 +65,7 @@
             </div>
 
             <!-- ===== ===== City ===== ===== -->
+
             <div class="space-y-2 mt-4">
 
                 <x-label class="required">{{ __('Cities') }}</x-label>
@@ -77,6 +78,7 @@
                             wire:model="city_id">
 
                             <option disabled selected value="0">Seleccione una opción</option>
+
 
                             @foreach ($cities as $city)
 

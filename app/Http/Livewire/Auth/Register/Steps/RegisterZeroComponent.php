@@ -30,6 +30,11 @@ class RegisterZeroComponent extends StepComponent
         $this->validate();
         $this->nextStep();
 
+        // Si existe la sesión cities, la eliminamos
+        if (session()->has('cities')) {
+            session()->forget('cities');
+        }
+
     }
 
     public function render()

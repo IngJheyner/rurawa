@@ -85,12 +85,22 @@ class RegisterTwoComponent extends StepComponent
         auth()->login($user);
         auth()->user()->sendEmailVerificationNotification();
 
+        // eliminar la session cities si existe
+        if (session()->has('cities')) {
+            session()->forget('cities');
+        }
         return app(RegisterResponse::class);
     }
 
     public function previous() {
 
-        $this->previousStep();
+        // Si existe la session cities, debe devolver al step-third
+        if (session()->has('cities')) {
+            $this->showStep('step-third');
+        } else {
+            $this->previousStep();
+        }
+
 
     }
 

@@ -16,14 +16,14 @@ class RegisterThirdComponent extends StepComponent
     protected $rules = [
         'department_id' => 'required|not_in:0',
         'city_id' => 'required|not_in:0',
-        'address' => 'required',
+        'address' => 'required|unique:persons,address',
         'company_name' => 'required',
         'organization_belongs' => 'required|not_in:none',
     ];
 
     public function mount() {
 
-
+        $this->cities = session('cities', []);
     }
 
     /* ============================================
@@ -50,13 +50,13 @@ class RegisterThirdComponent extends StepComponent
     =============================================== */
     public function updatedDepartmentId($value) {
         $this->cities = Department::find($value)->cities;
+        session(['cities' => $this->cities]);
         $this->reset('city_id');
     }
 
     public function previous() {
 
         $this->showStep('step-one');
-        $this->reset('cities');
 
     }
 
